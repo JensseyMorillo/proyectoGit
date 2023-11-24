@@ -178,39 +178,9 @@ namespace CapaPresentacion
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Quieres Convertir esta tabla a un Excel?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                    ExportarDatos(tablaProductos);
-            }
-               
+           
         }
-        public void ExportarDatos(DataGridView dataListado)
-        {
-            Microsoft.Office.Interop.Excel.Application exportaexcel = new Microsoft.Office.Interop.Excel.Application();
-            exportaexcel.Application.Workbooks.Add(true);
-
-            int indicecolums = 0;
-
-            foreach (DataGridViewColumn column in dataListado.Columns)
-            {
-                indicecolums++;
-
-                exportaexcel.Cells[1, indicecolums] = column.Name;
-            }
-            int indicefilas = 0;
-            foreach (DataGridViewRow fila in dataListado.Rows)
-            {
-                indicefilas++;
-                indicecolums = 0;
-                foreach (DataGridViewColumn column in dataListado.Columns)
-                {
-                    indicecolums++;
-                    exportaexcel.Cells[indicefilas + 1, indicecolums] = fila.Cells[column.Name].Value;
-                }
-            }
-
-            exportaexcel.Visible = true;
-        }
+        
 
     }
 }
